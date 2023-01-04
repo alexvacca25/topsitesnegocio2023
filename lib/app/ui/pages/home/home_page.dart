@@ -1,5 +1,4 @@
 
-import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:topsitesnegocio/app/controllers/home_controller.dart';
@@ -7,13 +6,11 @@ import 'package:topsitesnegocio/app/ui/widgets/titulo.dart';
 
 import '../../theme/colores.dart';
 import '../../widgets/error_pantalla.dart';
-import '../usuario/usuario_list.dart';
 import 'menu_lateral.dart';
 
 class HomePage extends GetView {
   
-  HomePage({super.key});
-  // HomeController homeController = Get.put(HomeController());
+  const HomePage({super.key});  
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +22,6 @@ class HomePage extends GetView {
 class ResponsiveHome extends GetResponsiveView{
 
   HomeController homeController = Get.find();
-
-  List opciones = [
-    {'titulo':'Perfil','icono':BootstrapIcons.person, 'value': 1},
-    {'titulo':'Opciones','icono':BootstrapIcons.sliders, 'value': 2},
-    {'titulo':'Documentacion','icono':BootstrapIcons.sliders, 'value': 2},
-    {'titulo':'Cerrar sesion','icono':BootstrapIcons.box_arrow_left, 'value': 3},
-  ];
-  
-  // final BuildContext context;
 
   ResponsiveHome({super.key});
 
@@ -57,17 +45,27 @@ class ResponsiveHome extends GetResponsiveView{
           actions:  menuOpciones(),
         )
       ),
+      /**
+       * muestra las opciones del menu
+       * - inicio
+       * - reserva o compra 
+       * - usuarios (esta opcion la muestra cuando el tamaño de la pantalla no es escritorio)
+       */
       drawer: MenuDrawer(),
       body: Row(
         children: [
+
+          //muestra el menu lateral solo si es escritorio
           !screen.isDesktop ? Container() : MenuLateral(),
+
+          //muestra el contrnido del item seleccionado
+          //el contenido de la lista es cargado con los elementos de la lista definida en home controller vistas
           Expanded(
             child: Container(
               color: Colores.rojo,
               child: Obx(() => homeController.vistas[homeController.vista.value]['vista']),
             )
           ),
-          !screen.isDesktop ? Container() : ListUsuarios()
         ],
       )
     );
@@ -87,11 +85,10 @@ class ResponsiveHome extends GetResponsiveView{
             onTap: (){},
             child: const ListTile(title: Text('Opciones'))
           ),
-          PopupMenuItem(
-            onTap: (){},
-            child: const ListTile(title: Text('Documentacion'))
+          const PopupMenuItem(
+            enabled: false, 
+            child: Divider()
           ),
-          const PopupMenuItem(enabled: false, child: Divider()),
           PopupMenuItem(
             onTap: ()async{
               await homeController.cerrarSesion();

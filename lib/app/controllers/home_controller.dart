@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:topsitesnegocio/app/controllers/sesion_controller.dart';
 
 import '../data/repository/token_repository.dart';
-import '../ui/pages/home/menu_lateral.dart';
 import '../ui/pages/usuario/usuario_list.dart';
 import '../ui/pages/sede_list/sedes_list.dart';
 
@@ -22,12 +21,17 @@ class HomeController extends GetxController {
     {
       'nombre': 'Reservas o compras',
       'icono': BootstrapIcons.check2_square,
-      'vista': Scaffold(body: Text(''),)
+      'vista': const Scaffold(body: Text(''),)
+    },
+    {
+      'nombre': 'Documentacion',
+      'icono': BootstrapIcons.filetype_pdf,
+      'vista': const Scaffold(body: Text(''),)
     },
     {
       'nombre': 'Usuarios',
       'icono': BootstrapIcons.person,
-      'vista': Scaffold(body:ListUsuarios())
+      'vista': ListUsuarios()
     },
   ];
 

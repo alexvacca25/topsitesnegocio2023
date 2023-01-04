@@ -26,7 +26,8 @@ class MenuLateral extends GetResponsiveView{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: List.generate(
-                      screen.isDesktop ? _.vistas.length - 1 : _.vistas.length, 
+                      // screen.isDesktop ? _.vistas.length - 1 : _.vistas.length, 
+                      _.vistas.length,
                       (index) => Padding(
                         padding: const EdgeInsets.only(top:20, bottom: 10),
                         child: IconButton(
@@ -116,7 +117,9 @@ class MenuDrawer extends GetResponsiveView{
                   children: [
                     Column(
                       children: List.generate(
-                        !screen.isDesktop ? homeController.vistas.length : homeController.vistas.length -1, 
+                        homeController.vistas.length ,
+                        // !screen.isDesktop ? 
+                        // : homeController.vistas.length -1, 
                         (index) => ListTile(
                           selected: homeController.vista.value == index,
                           selectedColor: Colores.verde,
