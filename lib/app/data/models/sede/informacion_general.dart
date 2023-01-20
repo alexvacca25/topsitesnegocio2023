@@ -11,6 +11,8 @@ class InformacionGeneral {
   String direccion;
   String correo;
   String descripcion;
+  bool estado;
+  String parqueadero;
   InformacionGeneral({
     required this.nombre,
     required this.telefono,
@@ -21,6 +23,8 @@ class InformacionGeneral {
     required this.direccion,
     required this.correo,
     required this.descripcion,
+    required this.estado,
+    required this.parqueadero,
   });
   factory InformacionGeneral.construir({
     nombre,
@@ -32,6 +36,8 @@ class InformacionGeneral {
     direccion,
     correo,
     descripcion,
+    estado,
+    parqueadero
   }){
     return InformacionGeneral(
     nombre: nombre ?? '',
@@ -43,6 +49,8 @@ class InformacionGeneral {
     direccion: direccion ?? '',
     correo: correo ?? '',
     descripcion: descripcion ?? '',
+    estado: estado ?? true,
+    parqueadero: parqueadero ?? ''
   );
   }
 }

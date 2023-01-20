@@ -3,7 +3,10 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:topsitesnegocio/app/data/models/sede/combo_plan.dart';
+import 'package:topsitesnegocio/app/data/models/sede/evento.dart';
+import 'package:topsitesnegocio/app/data/models/sede/renta.dart';
 import 'package:topsitesnegocio/app/data/models/sede/termino_condicion.dart';
+import 'package:topsitesnegocio/app/data/models/sede/ticket.dart';
 import 'package:topsitesnegocio/app/ui/pages/sede_detalle/form_combo_plan.dart';
 
 import '../../../theme/colores.dart';
@@ -38,12 +41,12 @@ class BotonFlotanteSede extends StatelessWidget {
                       Modal.child(
                         context,
                         barrierDismissible: false,
-                        child: FormComboPlan(comboPlan: ComboPlan(),)
+                        child: FormComboPlan(comboPlan: ComboPlan.construir(),)
                       );
                     },
                     color: Colores.verde,
                     colorHover: Colores.verdeOscuro,
-                    child: Text('Agregar Combo / plan'),
+                    child: const Text('Agregar Combo / plan'),
                   ),
                   Boton(
                     accion: (){
@@ -51,12 +54,12 @@ class BotonFlotanteSede extends StatelessWidget {
                       Modal.child(
                         context,
                         barrierDismissible: false,
-                        child: FormEvento()
+                        child: FormEvento(evento: Evento.construir(),)
                       );
                     },
                     color: Colores.verde,
                     colorHover: Colores.verdeOscuro,
-                    child: Text('Agregar nuevo evento'),
+                    child: const Text('Agregar nuevo evento'),
                   ),
                   Boton(
                     accion: (){
@@ -64,12 +67,12 @@ class BotonFlotanteSede extends StatelessWidget {
                       Modal.child(
                         context,
                         barrierDismissible: false,
-                        child: FormRenta()
+                        child: FormRenta(renta: Renta.construir(),)
                       );
                     },
                     color: Colores.verde,
                     colorHover: Colores.verdeOscuro,
-                    child: Text('Agregar nueva renta'),
+                    child: const Text('Agregar nueva renta'),
                   ),
                   Boton(
                     accion: (){
@@ -77,12 +80,12 @@ class BotonFlotanteSede extends StatelessWidget {
                       Modal.child(
                         context,
                         barrierDismissible: false,
-                        child: FormTicket()
+                        child: FormTicket(ticket: Ticket.construir(),)
                       );
                     },
                     color: Colores.verde,
                     colorHover: Colores.verdeOscuro,
-                    child: Text('Agregar nuevo ticket'),
+                    child: const Text('Agregar nuevo ticket'),
                   ),
                   Boton(
                     accion: (){
@@ -95,7 +98,7 @@ class BotonFlotanteSede extends StatelessWidget {
                     },
                     color: Colores.verde,
                     colorHover: Colores.verdeOscuro,
-                    child: Text('Agregar nuevo Termino y condicion'),
+                    child: const Text('Agregar nuevo Termino y condicion'),
                   ),
                 ],
               )
@@ -104,7 +107,7 @@ class BotonFlotanteSede extends StatelessWidget {
         );
       },
       backgroundColor: Colores.rosa,
-      child: Icon(BootstrapIcons.plus),
+      child: const Icon(BootstrapIcons.plus),
     );
   }
 }

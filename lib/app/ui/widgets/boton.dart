@@ -96,6 +96,7 @@ class BotonTexto extends StatefulWidget {
   final VoidCallback? accion;
   final String? texto;
   final Color? color;
+  final TextAlign textAlign;
   final Color? colorHover;
 
   const BotonTexto({    
@@ -104,6 +105,7 @@ class BotonTexto extends StatefulWidget {
     this.texto, 
     this.color, 
     this.colorHover, 
+    this.textAlign = TextAlign.start, 
   });
 
   @override
@@ -121,6 +123,8 @@ class _BotonTextoState extends State<BotonTexto> {
   bool _onHovered = false;
   bool _onFocused = false;
 
+  TextAlign? textAlign; 
+
   @override
   void initState() {
     super.initState();
@@ -129,6 +133,7 @@ class _BotonTextoState extends State<BotonTexto> {
     texto = widget.texto ?? '';
     color = widget.color ?? Colores.azulOscuro;
     colorHover = widget.colorHover ?? Colores.azulMedio;
+    textAlign = widget.textAlign;
   }
 
 
@@ -143,6 +148,7 @@ class _BotonTextoState extends State<BotonTexto> {
           cursor: SystemMouseCursors.click,
           child: Text(
             texto,
+            textAlign: textAlign,
             style: TextStyle(
               color: _onHovered || _onFocused ? colorHover:color,
               decoration: TextDecoration.underline,

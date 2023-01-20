@@ -27,6 +27,9 @@ class BottomBarSede extends StatelessWidget {
                 indicatorSize: TabBarIndicatorSize.label,
                 indicatorColor: Colores.blanco,
                 indicator: null,
+                indicatorPadding: EdgeInsets.all(0),
+                isScrollable: true,
+                padding: EdgeInsets.all(0),
                 onTap: seleccionarTab,
                 tabs: const [
                   Tab(

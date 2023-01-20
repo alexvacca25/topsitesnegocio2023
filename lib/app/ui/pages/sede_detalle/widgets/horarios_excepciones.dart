@@ -55,6 +55,7 @@ class HorariosExcepciones extends StatelessWidget {
                 IconButton(onPressed: ()=>Get.back(), icon: const Icon(BootstrapIcons.x))
               ],
               bottom: const TabBar(
+                isScrollable: true,
                 tabs: [
                   Tab(text: 'Información general',),
                   Tab(text: 'Horarios',),

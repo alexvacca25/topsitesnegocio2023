@@ -7,10 +7,6 @@ import 'app/app.dart';
 
 
 
-
-
-
-
 Future<void> main() async{
   //inicializando get storage para guardar el token del usuario
   await GetStorage.init();

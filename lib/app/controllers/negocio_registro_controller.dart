@@ -11,25 +11,29 @@ import '../data/repository/negocio_repository.dart';
 
 class RegistroNegocioController extends GetxController {
 
-  // SesionController sesionController = Get.find();
-  // TipoServicioRepository tipoServicio = Get.find();
-  // NegocioRepository negocioRepository = Get.find();
-
   NegocioRepository negocioRepository = NegocioRepository();
 
-  final paises = <Pais>[].obs;
-  final departamentos = <Departamento>[].obs;
-  final ciudades = <Ciudad>[].obs;
-  final promedioVentaMes = <PromedioVentaMes>[].obs;
+  final paises = <Pais>[Pais(id: '0',nombre: 'Pais')].obs;
+  final departamentos = <Departamento>[Departamento(id:'0',nombre: 'Departamento')].obs;
+  final ciudades = <Ciudad>[Ciudad(id:'0',nombre: 'Ciudad')].obs;
+  final promedioVentaMes = <PromedioVentaMes>[PromedioVentaMes(id:'0',promedioVenta: 'Promedio de ventas al mes')].obs;
 
   @override
-  void onInit() {
-    paises.value = [Pais(id: '0',nombre: 'Pais'), Pais(id: '1',nombre: 'Pais 1')] ;
-    departamentos.value = [Departamento(id:'0',nombre: 'Departamento'), Departamento(id:'1',nombre: 'Departamento 1')];
-    ciudades.value = [Ciudad(id:'0',nombre: 'Ciudad'), Ciudad(id:'1',nombre: 'Ciudad 1')];
-    promedioVentaMes.value = [PromedioVentaMes(id:'0',promedioVenta: 'Promedio de ventas al mes'), PromedioVentaMes(id:'1',promedioVenta: 'Promedio de ventas al mes 1')];
+  void onInit() async {
+    /**
+     * se debe realizar la consulta al backend para cargar los selects
+     */
+
+    paises.value.addAll([Pais(id: '1',nombre: 'Pais 1')]);
+    departamentos.addAll([Departamento(id:'1',nombre: 'Departamento 1')]);
+    ciudades.value.addAll([Ciudad(id:'1',nombre: 'Ciudad 1')]);
+    promedioVentaMes.value.addAll([PromedioVentaMes(id:'1',promedioVenta: 'Promedio de ventas al mes 1')]);
     super.onInit();
   }
+
+  /**
+   * estos son los controladores de los inputs
+   */
 
   TextInputController txtNumeroIdentificacion = TextInputController();
   TextInputController txtNombreNegocio = TextInputController();
@@ -41,11 +45,11 @@ class RegistroNegocioController extends GetxController {
   TextInputController txtInstagram = TextInputController();
   TextInputController txtMensaje = TextInputController();
 
-  final tipoPersonaSeleccionado = 'Tipo de persona'.obs;
-  final paisSeleccionado = 'Pais'.obs;
-  final departamentoSeleccionado = 'Departamento'.obs;
-  final ciudadSeleccionado = 'Ciudad'.obs;
-  final promedioVentasSeleccionado = 'Promedio de ventas al mes'.obs;
+  final tipoPersonaSeleccionado = '0'.obs;
+  final paisSeleccionado = '0'.obs;
+  final departamentoSeleccionado = '0'.obs;
+  final ciudadSeleccionado = '0'.obs;
+  final promedioVentasSeleccionado = '0'.obs;
 
   Future<void> registrarNegocio()async{
     
@@ -56,10 +60,14 @@ class RegistroNegocioController extends GetxController {
     if(validarComposRegistroNegocio()){
       return;
     }
+
+    /**
+     * se construye el negocio con los datos ingresados por el cliente
+     */
     
     Negocio negocio = Negocio.construir(
       tipoPersona : tipoPersonaSeleccionado.value,
-      numeroIdentificacion : txtNumeroContacto.controlador.text,
+      numeroIdentificacion : txtNumeroIdentificacion.controlador.text,
       nombreNegocio : txtNombreNegocio.controlador.text,
       nombreContacto : txtNombreContacto.controlador.text,
       pais : Pais(id: '',nombre: paisSeleccionado.value),
@@ -77,10 +85,16 @@ class RegistroNegocioController extends GetxController {
     );
 
     try {
+      /**
+       * se envian los datos al repository
+       */
       await negocioRepository.add(negocio);
       Get.back();
       MensajeInferior.porDefecto(titulo: 'Registrado', mensaje: 'Registrado correctamente');
     } catch (e) {
+      /**
+       * en caso de que falle, se muestra este error
+       */
       MensajeInferior.porDefecto(titulo: 'Error', mensaje: e.toString());
     }
 

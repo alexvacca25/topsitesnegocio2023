@@ -4,6 +4,7 @@ import 'package:topsitesnegocio/app/data/models/sede/pago_cobro.dart';
 import 'package:topsitesnegocio/app/data/models/sede/termino_condicion.dart';
 import 'package:topsitesnegocio/app/data/models/sede/ticket.dart';
 
+import '../metodos.dart';
 import 'combo_plan.dart';
 import 'horario_sede.dart';
 import 'imagenes_sede.dart';
@@ -70,9 +71,13 @@ class Sede {
       rentas: rentas ?? [],
       tickets: tickets ?? [],
       terminosCondiciones: terminosCondiciones ?? [] ,
-      fechaRegistro: fechaRegistro ,
+      fechaRegistro: fechaRegistro,
       estado: estado ,
     );
+  }
+
+  get strFecha{
+    return fechaRegistro == null ? 'Sin fecha' : fechaToString(fechaRegistro);
   }
 
 }

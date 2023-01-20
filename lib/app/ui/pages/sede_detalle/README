@@ -1,0 +1,16 @@
+la vista principal de este folder es sede page
+esta vista se encarga de visualizar todos los datos de la sede seleccionada
+
+se realiza una peticion al backend y se obtienen todos lo datos de esta sede
+- informacion general
+- imagenes
+- horarios
+- pagos y cobros
+
+esto se hace en el controlador que se encuentra en la carpeta controllers
+el controlador se llama sede_controller.dart
+
+
+en detalles sede se encuentran los tabs y los detalles de la sede seleccionada
+
+el boton flotante que permite agregar nuevos elementos se encuentra en widgets boton flotante 

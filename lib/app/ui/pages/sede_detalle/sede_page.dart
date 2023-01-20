@@ -56,7 +56,6 @@ class Contenedor extends GetResponsiveView {
                   width: ancho,
                   child: DetallesSede()
                 ),
-                // Get.width < 1100 ? Container() : HorariosExcepciones()
               ],
             );
           },

@@ -44,35 +44,6 @@ class DetallesSede extends GetResponsiveView {
             body: ListView(
               children: [
                 ImagenesNombreDescripcion(),
-                // Get.width > 1100 ? 
-                //   Container() : 
-                //   SingleChildScrollView(
-                //     scrollDirection: Axis.horizontal,
-                //     child: Padding(
-                //       padding: const EdgeInsets.symmetric(horizontal: 10),
-                //       child: Boton(
-                //         accion: (){
-                //           Modal.child(
-                //             context,
-                //             child: Scaffold(
-                //               appBar: AppBar(
-                //                 automaticallyImplyLeading: false,
-                //                 title: Text('Horarios y Excepciones'),
-                //                 backgroundColor: Colores.negro,
-                //                 actions: [
-                //                   IconButton(onPressed: ()=>Get.back(), icon: Icon(BootstrapIcons.x))
-                //                 ],
-                //               ),
-                //               body: HorariosExcepciones(),
-                //             )
-                //           );
-                //         },
-                //         color: Colores.verde,
-                //         child: const Text('Ver Horarios y excepciones')
-                //       ),
-                //     )
-                //   ),
-                // SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Inputs(controller: TextInputController(), titulo: 'Buscar en ${vistas[seleccionado.value]}',),

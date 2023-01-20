@@ -21,10 +21,12 @@ class FormImformacionGeneralController extends GetxController {
   TextInputController txtDireccion = TextInputController();
   TextInputController txtCorreo = TextInputController();
   TextInputController txtDescripcion = TextInputController();
+  TextInputController txtParqueadero = TextInputController();
 
   final pais = ''.obs;
   final departamento = ''.obs;
   final ciudad = ''.obs;
+  final estado = false.obs;
   
   final errorPais = false.obs;
   final errorDepartamento = false.obs;
@@ -41,6 +43,9 @@ class FormImformacionGeneralController extends GetxController {
     txtDireccion.controlador.text = informacionGeneral.value.direccion;
     txtCorreo.controlador.text = informacionGeneral.value.correo;
     txtDescripcion.controlador.text = informacionGeneral.value.descripcion;
+    txtParqueadero.controlador.text = informacionGeneral.value.parqueadero;
+
+    estado.value = informacionGeneral.value.estado;
 
     pais.value = informacionGeneral.value.pais.id == '' ? '0' : informacionGeneral.value.pais.id;
     departamento.value = informacionGeneral.value.departamento.id == '' ? '0' : informacionGeneral.value.departamento.id;
@@ -63,6 +68,9 @@ class FormImformacionGeneralController extends GetxController {
       informacionGeneral.value.direccion = txtDireccion.controlador.text;
       informacionGeneral.value.correo = txtCorreo.controlador.text;
       informacionGeneral.value.descripcion = txtDescripcion.controlador.text;
+      informacionGeneral.value.parqueadero = txtParqueadero.controlador.text;
+      informacionGeneral.value.estado = estado.value;
+
 
       dynamic response = sedeRepository.actualizarInformacionGeneral(sedeController.token!, sedeController.sede.value.id,informacionGeneral.value);
       sedeController.sede.value.informacionGeneral = response;

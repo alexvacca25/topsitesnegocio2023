@@ -3,6 +3,7 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:topsitesnegocio/app/ui/theme/fonts.dart';
+import 'package:topsitesnegocio/app/ui/widgets/switch.dart';
 
 import '../../../controllers/form_informacion_general_controller.dart';
 import '../../theme/colores.dart';
@@ -178,6 +179,14 @@ class FormInformacionGeneral extends GetResponsiveView {
                   ),
                 ],
               ), 
+              Inputs(controller:_.txtParqueadero, titulo: 'Parqueadero, Ej: calle, propio',),
+              Obx(
+                ()=>SwitchPersonalizado(
+                  estado: _.estado.value, 
+                  onChanged: (value)=>_.estado.value = value,
+                  texto: 'Estado',
+                ),
+              ),
               const SizedBox(height: 100,)
             ],
           )

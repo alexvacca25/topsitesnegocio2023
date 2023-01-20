@@ -1,90 +1,85 @@
+import 'package:flutter/material.dart';
+
+import 'package:topsitesnegocio/app/data/models/metodos.dart';
+import 'package:topsitesnegocio/app/data/models/sede/imagenes_sede.dart';
+import 'package:topsitesnegocio/app/data/models/sede/termino_condicion.dart';
+
+import 'adicion.dart';
+import 'fecha_hora.dart';
+
 class ComboPlan {
   dynamic id;
-  bool? estado;
-  String? nombre;
-  String? descripcion;
-  List<dynamic>? imagenes;
-  List<FechaHora>?  fechaHora;
-  List<DetalleComboPlan>? detalles;
-  List<Adicion>? adiciones;
+  bool estado;
+  String nombre;
+  String descripcion;
+  Imagen imagenPrincipal;
+  List<Imagen> imagenes;
+  List<FechaHora>  fechaHora;
+  List<DetalleComboPlan> detalles;
+  List<Adicion> adiciones;
+  List<TerminoCondicion> terminosCondiciones;
+  int numeroEstrellas;
   
   ComboPlan({
-    this.id,
-    this.estado,
-    this.nombre,
-    this.descripcion,
-    this.imagenes,
-    this.fechaHora,
-    this.detalles,
-    this.adiciones,
+    required this.id,
+    required this.estado,
+    required this.nombre,
+    required this.descripcion,
+    required this.imagenPrincipal,
+    required this.imagenes,
+    required this.fechaHora,
+    required this.detalles,
+    required this.adiciones,
+    required this.terminosCondiciones,
+    required this.numeroEstrellas,
   });
+
+  factory ComboPlan.construir(
+    {
+      id,
+      estado,
+      nombre,
+      descripcion,
+      imagenPrincipal,
+      imagenes,
+      fechaHora,
+      detalles,
+      adiciones,
+      numeroEstrellas,
+      terminosCondiciones
+    }
+  ){
+    return ComboPlan(
+      id: id ,
+      estado: estado ?? true,
+      nombre: nombre ?? '',
+      descripcion: descripcion ?? '',
+      imagenPrincipal: imagenPrincipal ?? Imagen(),
+      imagenes: imagenes ?? [],
+      fechaHora: fechaHora ?? [],
+      detalles: detalles ?? [],
+      adiciones: adiciones ?? [],
+      terminosCondiciones: terminosCondiciones ?? [],
+      numeroEstrellas: numeroEstrellas ?? 0
+    );
+  }
 
 
   agregarDetalle(DetalleComboPlan detalle){
-    if(detalles==null){
-      detalles = [detalle];
-    }else{
-      detalles!.add(detalle);
-    }
+    detalles.add(detalle);
   }
-
-  get getDetalles{
-    return detalles ?? [];
-  }
-  agregarImagen(dynamic imagen){
-    if(imagenes==null){
-      imagenes = [imagen];
-    }else{
-      imagenes!.add(imagen);
-    }
-  }
-
-  get getImagenes{
-    return imagenes ?? [];
+  agregarImagen(Imagen imagen){
+    imagenes.add(imagen);
   }
   agregarFechaHora(FechaHora fechaHora){
-    if(this.fechaHora==null){
-      this.fechaHora = [fechaHora];
-    }else{
-      this.fechaHora!.add(fechaHora);
-    }
-  }
-
-  get getFechaHora{
-    return fechaHora ?? [];
+    this.fechaHora.add(fechaHora);
   }
   agregarAdicion(Adicion adicion){
-    if(adiciones==null){
-      adiciones = [adicion];
-    }else{
-      adiciones!.add(adicion);
-    }
+    adiciones.add(adicion);
   }
-
-  get getAdiciones{
-    return adiciones ?? [];
-  }
-
 }
 
 
-class FechaHora {
-  dynamic id;
-  DateTime? fechaHoraInicio;
-  DateTime? fechaHoraFin;
-  double? valor;
-  bool? aplicaDescuento;
-  int? descuento;
-
-  FechaHora({
-    this.id,
-    this.fechaHoraInicio,
-    this.fechaHoraFin,
-    this.valor,
-    this.aplicaDescuento,
-    this.descuento,
-  });
-}
 
 class DetalleComboPlan {
   dynamic id;
@@ -95,19 +90,3 @@ class DetalleComboPlan {
   });
 }
 
-class Adicion {
-  dynamic id;
-  String? nombre;
-  double? valor;
-  int? cantidadMaxima;
-  bool? aplicaDescuento;
-  int? descuento;
-  Adicion({
-    this.id,
-    this.nombre,
-    this.valor,
-    this.cantidadMaxima,
-    this.aplicaDescuento,
-    this.descuento,
-  });
-}

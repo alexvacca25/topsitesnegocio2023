@@ -9,10 +9,10 @@ import '../theme/colores.dart';
  */
 
 class DatePicker {
-  Future<DateTime?> porDefecto(context)async{
+  Future<DateTime?> porDefecto(context, {DateTime? fechaInicial })async{
     DateTime? fecha = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: fechaInicial ?? DateTime.now(),
       firstDate:DateTime.now(),
       lastDate: DateTime(2101),
       builder: (context, child) {

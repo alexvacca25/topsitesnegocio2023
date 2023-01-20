@@ -58,7 +58,7 @@ class SedesList extends GetResponsiveView {
                         sedeListController.sedes.length,
                         (index) => Tarjeta(
                           titulo: sedeListController.sedes[index].informacionGeneral.nombre,
-                          subtitulo: sedeListController.sedes[index].informacionGeneral.descripcion.isEmpty ? 'Aun no hay descripción' : sedeListController.sedes[index].informacionGeneral.descripcion,
+                          subtitulo: '${sedeListController.sedes[index].strFecha}\n${sedeListController.sedes[index].informacionGeneral.descripcion.isEmpty ? 'Aun no hay descripción' : sedeListController.sedes[index].informacionGeneral.descripcion}',
                           foto: sedeListController.sedes[index].imagenesSede.fotoLogo.imagen,
                           imagen: sedeListController.sedes[index].imagenesSede.fotoPrincipal.imagen,
                           width: !screen.isDesktop ? Get.width : 300,
@@ -97,10 +97,23 @@ class SedesList extends GetResponsiveView {
                               PopupMenuItem(
                                 padding: EdgeInsets.all(0),
                                 child: ListTile(
-                                  onTap: (){},
+                                  onTap: (){
+                                    ///aqui se ejecuta el metodo eliminar
+                                  },
                                   leading: Icon(BootstrapIcons.trash),
                                   title: Text('Eliminar'),
                                 ),
+                              ),
+                              const PopupMenuItem(
+                                enabled: false,
+                                padding: EdgeInsets.all(0),
+                                child: Divider()
+                              ),
+                              PopupMenuItem(
+                                mouseCursor: SystemMouseCursors.basic,
+                                enabled: false,
+                                padding: const EdgeInsets.all(10),
+                                child: Text('${sedeListController.sedes[index].estado ?? 'Estado'}', textAlign: TextAlign.center,)
                               ),
                             ],
                           ),

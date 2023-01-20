@@ -22,8 +22,9 @@ class FormTerminosCondiciones extends GetView {
 
   final cambiaTipoTermino = false.obs;
   final errorCombo = false.obs;
+  final esObtener;
   
-  FormTerminosCondiciones({super.key, required this.terminoCondicion});
+  FormTerminosCondiciones({super.key, required this.terminoCondicion, this.esObtener = false});
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +84,12 @@ class FormTerminosCondiciones extends GetView {
                     return;
                   }
 
+
+                  if(esObtener){
+                    Get.back(result: terminoCondicion);
+                    return;
+                  }
+                  
                   bool respuesta = false;
 
                   if(terminoCondicion.id == null){

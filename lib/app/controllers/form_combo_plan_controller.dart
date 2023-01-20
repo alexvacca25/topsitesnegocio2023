@@ -19,7 +19,6 @@ class FormComboPlanController extends GetxController {
     try {
       sedeController.cargarDatosSede();
       return true;
-
     } catch (e) {
       MensajeInferior.porDefecto(titulo: 'Error', mensaje: e.toString());
       return false;

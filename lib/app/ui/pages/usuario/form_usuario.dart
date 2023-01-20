@@ -13,23 +13,18 @@ import '../../../data/models/sede/combo_plan.dart';
 
 class FormUsuario extends StatelessWidget {
   
-  const FormUsuario({super.key, this.comboPlan});
-
-  final ComboPlan? comboPlan;
+  const FormUsuario({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(comboPlan: comboPlan ?? ComboPlan());
+    return Responsive();
   }
 }
 class Responsive extends GetResponsiveView {
 
   final cambia = false.obs;
-  final ComboPlan comboPlan;
   
-  Responsive({
-    required this.comboPlan,
-  });
+  Responsive();
 
   @override
   Widget builder() {
@@ -69,7 +64,7 @@ class Responsive extends GetResponsiveView {
                 ),
                 SizedBox(width: 10,),
                 Container(child: Boton(
-                  accion: ()=>Get.back(result: comboPlan),
+                  accion: ()=>Get.back(),
                   child: Text('Guardar'),color: Colores.verde,)),
               ],
           ),
@@ -116,28 +111,56 @@ class Responsive extends GetResponsiveView {
             ], 
             onChanged: (vaue){}
           ),
-          Inputs(controller: TextInputController().init(comboPlan.nombre), titulo: 'Número identificación',onChanged: (str){comboPlan.nombre = str!;},),
+          Inputs(controller: TextInputController(), titulo: 'Número identificación',),
           Row(
             children: [
-              Expanded(child: Inputs(controller: TextInputController().init(comboPlan.descripcion), titulo: 'Nombres',onChanged: (str){comboPlan.descripcion = str!;},)),
+              Expanded(child: Inputs(controller: TextInputController(), titulo: 'Nombres')),
               SizedBox(width: 10,),
-              Expanded(child: Inputs(controller: TextInputController().init(comboPlan.descripcion), titulo: 'Apellidos',onChanged: (str){comboPlan.descripcion = str!;},)),
+              Expanded(child: Inputs(controller: TextInputController(), titulo: 'Apellidos')),
             ],
           ),
-          Inputs(controller: TextInputController().init(comboPlan.nombre), titulo: 'Correo',onChanged: (str){comboPlan.nombre = str!;},),
+          Inputs(controller: TextInputController(), titulo: 'Correo'),
+          SizedBox(height: 10,),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Radio(
-                value: true,
-                groupValue: true,
-                onChanged: (value) {
-                  
-                },
+              Expanded(
+                child: Text('Codigo generado')
               ),
-              Text('Usuario tipo promotor')
+              Expanded(
+                child: Text(
+                  'asd856',
+                  textAlign: TextAlign.end,
+                )
+              ),
+              IconButton(onPressed: (){}, icon: Icon(BootstrapIcons.paperclip))
             ],
           ),
+          SizedBox(height: 10,),
+          Row(
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Radio(
+                      value: true,
+                      groupValue: true,
+                      onChanged: (value) {
+                      },
+                    ),
+                    Expanded(child: Text('Usuario tipo promotor'))
+                  ],
+                ),
+              ),
+              Expanded(
+                child: BotonTexto(
+                  texto: 'Ver compras bajo codigo promotor ',
+                  textAlign: TextAlign.end,
+                )
+              )
+            ],
+          ),
+          SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -163,8 +186,10 @@ class Responsive extends GetResponsiveView {
               child: DropdownButton(
                 icon: const Icon(Icons.keyboard_arrow_down_outlined),
                 items: [
-                  DropdownMenuItem(child: Text('Consulta')),
+                  DropdownMenuItem(child: Text('Consulta'), value: '0',),
+                  DropdownMenuItem(child: Text('Modifica')),
                 ], 
+                value: '0',
                 onChanged: (vaue){}
               )
             )

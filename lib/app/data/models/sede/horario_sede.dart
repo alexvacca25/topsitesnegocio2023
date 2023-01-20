@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:topsitesnegocio/app/data/models/metodos.dart';
 
 class Horario {
   dynamic id;
@@ -71,10 +72,10 @@ class HorarioAtencion {
   } 
 
   get strHoraInicio{
-    return '${horaInicio.hourOfPeriod}:${horaInicio.minute < 10 ? '0${horaInicio.minute}' : horaInicio.minute } ${horaInicio.period == DayPeriod.am ? 'a.m.' : 'p.m.'}';
+    return horaToString(horaInicio);
   }
   get strHoraFin{
-    return '${horaFin.hourOfPeriod}:${horaFin.minute < 10 ? '0${horaFin.minute}' : horaFin.minute } ${horaFin.period == DayPeriod.am ? 'a.m.' : 'p.m.'}';
+    return horaToString(horaFin);
   }
 } 
 
@@ -116,16 +117,16 @@ class Excepcion {
     );
   }
   get strHoraInicio{
-    return '${horaInicio.hourOfPeriod}:${horaInicio.minute < 10 ? '0${horaInicio.minute}' : horaInicio.minute } ${horaInicio.period == DayPeriod.am ? 'a.m.' : 'p.m.'}';
+    return horaToString(horaInicio);
   }
   get strHoraFin{
-    return '${horaFin.hourOfPeriod}:${horaFin.minute < 10 ? '0${horaFin.minute}' : horaFin.minute } ${horaFin.period == DayPeriod.am ? 'a.m.' : 'p.m.'}';
+    return horaToString(horaFin);
   }
 
   get strFechaInicio{
-    return '${fechaInicio.day}/${fechaInicio.month}/${fechaInicio.year}';
+    return fechaToString(fechaInicio);
   }
   get strFechaFin{
-    return '${fechaFin.day}/${fechaFin.month}/${fechaFin.year}';
+    return fechaToString(fechaFin);
   }
 }
